@@ -1,10 +1,10 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Auth;
+namespace RealMrHex\larapasswordwor\Auth;
 
 use Closure;
 use Illuminate\Auth\Passwords\PasswordBroker;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class CredentialBroker extends PasswordBroker
@@ -14,35 +14,35 @@ class CredentialBroker extends PasswordBroker
      *
      * @var string
      */
-    public const RESET_LINK_SENT = 'larapass::recovery.sent';
+    public const RESET_LINK_SENT = 'larapasswordwor::recovery.sent';
 
     /**
      * Constant representing a successfully reset password.
      *
      * @var string
      */
-    public const PASSWORD_RESET = 'larapass::recovery.reset';
+    public const PASSWORD_RESET = 'larapasswordwor::recovery.reset';
 
     /**
      * Constant representing the user not found response.
      *
      * @var string
      */
-    public const INVALID_USER = 'larapass::recovery.user';
+    public const INVALID_USER = 'larapasswordwor::recovery.user';
 
     /**
      * Constant representing an invalid token.
      *
      * @var string
      */
-    public const INVALID_TOKEN = 'larapass::recovery.token';
+    public const INVALID_TOKEN = 'larapasswordwor::recovery.token';
 
     /**
      * Constant representing a throttled reset attempt.
      *
      * @var string
      */
-    public const RESET_THROTTLED = 'larapass::recovery.throttled';
+    public const RESET_THROTTLED = 'larapasswordwor::recovery.throttled';
 
     /**
      * Send a password reset link to a user.

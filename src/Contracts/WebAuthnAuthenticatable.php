@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Contracts;
+namespace RealMrHex\larapasswordwor\Contracts;
 
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialUserEntity;
@@ -111,7 +111,7 @@ interface WebAuthnAuthenticatable
      * Returns an WebAuthnAuthenticatable user from a given Credential ID.
      *
      * @param  string  $id
-     * @return \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null
+     * @return \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|null
      */
     public static function getFromCredentialId(string $id) : ?WebAuthnAuthenticatable;
 
@@ -119,7 +119,7 @@ interface WebAuthnAuthenticatable
      * Returns a WebAuthAuthenticatable user from a given User Handle.
      *
      * @param  string  $handle
-     * @return \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null
+     * @return \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|null
      */
     public static function getFromCredentialUserHandle(string $handle) : ?WebAuthnAuthenticatable;
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http;
+namespace RealMrHex\larapasswordwor\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 
 trait SendsWebAuthnRecoveryEmail
 {
@@ -16,7 +16,7 @@ trait SendsWebAuthnRecoveryEmail
      */
     public function showDeviceLostForm()
     {
-        return view('larapass::lost');
+        return view('larapasswordwor::lost');
     }
 
     /**

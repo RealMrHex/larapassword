@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http;
+namespace RealMrHex\larapasswordwor\Http;
 
 trait WebAuthnRules
 {

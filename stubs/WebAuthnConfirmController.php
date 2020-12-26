@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use DarkGhostHunter\Larapass\Http\ConfirmsWebAuthn;
+use RealMrHex\Larapassword\Http\ConfirmsWebAuthn;
 
 class WebAuthnConfirmController extends Controller
 {

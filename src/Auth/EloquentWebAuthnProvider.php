@@ -1,12 +1,12 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Auth;
+namespace RealMrHex\larapasswordwor\Auth;
 
 use Illuminate\Auth\EloquentUserProvider;
 use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Contracts\Auth\Authenticatable as UserContract;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAssertValidator;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAssertValidator;
 
 class EloquentWebAuthnProvider extends EloquentUserProvider
 {
@@ -20,7 +20,7 @@ class EloquentWebAuthnProvider extends EloquentUserProvider
     /**
      * WebAuthn assertion validator.
      *
-     * @var \DarkGhostHunter\Larapass\WebAuthn\WebAuthnAssertValidator
+     * @var \RealMrHex\larapasswordwor\WebAuthn\WebAuthnAssertValidator
      */
     protected $validator;
 
@@ -28,7 +28,7 @@ class EloquentWebAuthnProvider extends EloquentUserProvider
      * Create a new database user provider.
      *
      * @param  \Illuminate\Contracts\Config\Repository  $config
-     * @param  \DarkGhostHunter\Larapass\WebAuthn\WebAuthnAssertValidator  $validator
+     * @param  \RealMrHex\larapasswordwor\WebAuthn\WebAuthnAssertValidator  $validator
      * @param  \Illuminate\Contracts\Hashing\Hasher  $hasher
      * @param  string  $model
      */
@@ -37,7 +37,7 @@ class EloquentWebAuthnProvider extends EloquentUserProvider
                                 HasherContract $hasher,
                                 $model)
     {
-        $this->fallback = $config->get('larapass.fallback');
+        $this->fallback = $config->get('larapasswordwor.fallback');
         $this->validator = $validator;
 
         parent::__construct($hasher, $model);
@@ -47,7 +47,7 @@ class EloquentWebAuthnProvider extends EloquentUserProvider
      * Retrieve a user by the given credentials.
      *
      * @param  array  $credentials
-     * @return \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null|void
+     * @return \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|null|void
      */
     public function retrieveByCredentials(array $credentials)
     {
@@ -83,7 +83,7 @@ class EloquentWebAuthnProvider extends EloquentUserProvider
     /**
      * Validate a user against the given credentials.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @param  array  $credentials
      * @return bool
      */

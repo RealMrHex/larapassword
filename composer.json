@@ -1,17 +1,17 @@
 {
-    "name": "darkghosthunter/larapass",
+    "name": "realmrhex/larapassword",
     "description": "Authenticate users with just their device, fingerprint or biometric data. Goodbye passwords!",
     "keywords": [
-        "darkghosthunter",
+        "realmrhex",
         "webauthn",
         "laravel"
     ],
-    "homepage": "https://github.com/darkghosthunter/larapass",
+    "homepage": "https://github.com/realmrhex/larapassword",
     "license": "MIT",
     "type": "library",
     "authors": [{
-        "name": "Italo Israel Baeza Cabrera",
-        "email": "darkghosthunter@gmail.com",
+        "name": "mrhex",
+        "email": "mrhex@gmail.com",
         "role": "Developer"
     }],
     "require": {
@@ -31,12 +31,8 @@
     },
     "autoload": {
         "psr-4": {
-            "DarkGhostHunter\\Larapass\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
+            "RealMrHex\\Larapassword\\": "src/",
+            "DarkGhostHunter\\Larapass\\": ""
         }
     },
     "scripts": {
@@ -49,7 +45,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DarkGhostHunter\\Larapass\\LarapassServiceProvider"
+                "RealMrHex\\Larapassword\\LarapassServiceProvider"
             ]
         }
     }

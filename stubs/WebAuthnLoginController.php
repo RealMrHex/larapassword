@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use DarkGhostHunter\Larapass\Http\AuthenticatesWebAuthn;
+use RealMrHex\Larapassword\Http\AuthenticatesWebAuthn;
 
 class WebAuthnLoginController extends Controller
 {

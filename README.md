@@ -1,10 +1,10 @@
 ![Lukenn Sabellano - Unsplash (UL) #RDufjtg6JpQ](https://images.unsplash.com/photo-1567826722186-9ecdf689f122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&h=400&q=80)
 
-[![Latest Stable Version](https://poser.pugx.org/darkghosthunter/larapass/v/stable)](https://packagist.org/packages/darkghosthunter/larapass) [![License](https://poser.pugx.org/darkghosthunter/larapass/license)](https://packagist.org/packages/darkghosthunter/larapass)
-![](https://img.shields.io/packagist/php-v/darkghosthunter/larapass.svg)
- ![](https://github.com/DarkGhostHunter/Larapass/workflows/PHP%20Composer/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/DarkGhostHunter/Larapass/badge.svg?branch=master)](https://coveralls.io/github/DarkGhostHunter/Larapass?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/RealMrHex/larapasswordwor/v/stable)](https://packagist.org/packages/RealMrHex/larapasswordwor) [![License](https://poser.pugx.org/RealMrHex/larapasswordwor/license)](https://packagist.org/packages/RealMrHex/larapasswordwor)
+![](https://img.shields.io/packagist/php-v/RealMrHex/larapasswordwor.svg)
+ ![](https://github.com/RealMrHex/larapasswordwor/workflows/PHP%20Composer/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/RealMrHex/larapasswordwor/badge.svg?branch=master)](https://coveralls.io/github/RealMrHex/larapasswordwor?branch=master)
 
-## Larapass
+## larapasswordwor
 
 Authenticate users with just their device, fingerprint or biometric data. Goodbye passwords!
 
@@ -19,7 +19,7 @@ This enables WebAuthn authentication inside Laravel authentication driver, and c
 
 Just hit the console and require it with Composer.
 
-    composer require darkghosthunter/larapass
+    composer require RealMrHex/larapasswordwor
 
 # Table of contents
 
@@ -92,7 +92,7 @@ return [
 
 Create the `webauthn_credentials` table by publishing the migration files and migrating the table:
 
-    php artisan vendor:publish --provider="DarkGhostHunter\Larapass\LarapassServiceProvider" --tag="migrations"
+    php artisan vendor:publish --provider="RealMrHex\larapasswordwor\larapasswordworServiceProvider" --tag="migrations"
     php artisan migrate
 
 ### 3. Implement the contract and trait
@@ -105,8 +105,8 @@ Add the `WebAuthnAuthenticatable` contract and the `WebAuthnAuthentication` trai
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
-use DarkGhostHunter\Larapass\WebAuthnAuthentication;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\WebAuthnAuthentication;
 
 class User extends Authenticatable implements WebAuthnAuthenticatable
 {
@@ -120,9 +120,9 @@ class User extends Authenticatable implements WebAuthnAuthenticatable
 
 ### 4. Register the routes (optional)
 
-Finally, you will need to add the routes for registering and authenticating users. If you want a quick start, just publish the controllers included in Larapass.
+Finally, you will need to add the routes for registering and authenticating users. If you want a quick start, just publish the controllers included in larapasswordwor.
 
-    php artisan vendor:publish --provider="DarkGhostHunter\Larapass\LarapassServiceProvider" --tag="controllers"
+    php artisan vendor:publish --provider="RealMrHex\larapasswordwor\larapasswordworServiceProvider" --tag="controllers"
  
 You can copy-paste these route definitions in your `routes/web.php` file. 
 
@@ -144,20 +144,20 @@ In your frontend scripts, point the requests to these routes.
 
 ### 5. Use the Javascript helper (optional)
 
-This package includes a convenient script to handle registration and login via WebAuthn. To use it, just publish the `larapass.js` asset into your application public resources.
+This package includes a convenient script to handle registration and login via WebAuthn. To use it, just publish the `larapasswordwor.js` asset into your application public resources.
 
-    php artisan vendor:publish --provider="DarkGhostHunter\Larapass\LarapassServiceProvider" --tag="public"
+    php artisan vendor:publish --provider="RealMrHex\larapasswordwor\larapasswordworServiceProvider" --tag="public"
 
-You will receive the `vendor/larapass/js/larapass.js` file which you can include into your authentication views and use it programmatically, anyway you want.
+You will receive the `vendor/larapasswordwor/js/larapasswordwor.js` file which you can include into your authentication views and use it programmatically, anyway you want.
 
 ```html
-<script src="{{ asset('vendor/larapass/js/larapass.js') }}"></script>
+<script src="{{ asset('vendor/larapasswordwor/js/larapasswordwor.js') }}"></script>
 
 <!-- Registering credentials -->
 <script>
     const register = (event) => {
         event.preventDefault()
-        new Larapass({
+        new larapasswordwor({
             register: 'webauthn/register',
             registerOptions: 'webauthn/register/options'
         }).register()
@@ -172,7 +172,7 @@ You will receive the `vendor/larapass/js/larapass.js` file which you can include
 <script>
     const login = (event) => {
         event.preventDefault()
-        new Larapass({
+        new larapasswordwor({
             login: 'webauthn/login',
             loginOptions: 'webauthn/login/options'
         }).login({
@@ -190,7 +190,7 @@ You will receive the `vendor/larapass/js/larapass.js` file which you can include
 Also, the helper allows headers on the action request, on both registration and login.
 
 ```javascript
-new Larapass({
+new larapasswordwor({
     login: 'webauthn/login',
     loginOptions: 'webauthn/login/options'
 }).login({
@@ -207,7 +207,7 @@ new Larapass({
 You can enable it by just issuing the `WebAuthn-Remember` header value to `true` when pushing the signed login challenge from your frontend. We can do this easily with the [included Javascript helper](#5-use-the-javascript-helper-optional).
 
 ```javascript
-new Larapass.login({
+new larapasswordwor.login({
     email: document.getElementById('email').value
 }, {
     'WebAuthn-Remember': true
@@ -238,7 +238,7 @@ Route::post('webauthn/recover/register', 'Auth\WebAuthnRecoveryController@recove
 
 These come with [new views](resources/views) and [translation lines](resources/lang), so you can override them if you're not happy with what is included. 
 
-You can also override the views in `resources/vendor/larapass` and the notification being sent using the `sendCredentialRecoveryNotification` method of the user.
+You can also override the views in `resources/vendor/larapasswordwor` and the notification being sent using the `sendCredentialRecoveryNotification` method of the user.
 
 After that, don't forget to add a new token broker in your `config/auth.php`. We will need it to store the tokens from the recovery procedure.
 
@@ -267,7 +267,7 @@ return [
 
 ## Confirmation middleware
 
-Following the same principle of the [`password.confirm` middleware](https://laravel.com/docs/authentication#password-confirmation), Larapass includes a the `webauthn.confirm` middleware that will ask the user to confirm with his device before entering a given route.
+Following the same principle of the [`password.confirm` middleware](https://laravel.com/docs/authentication#password-confirmation), larapasswordwor includes a the `webauthn.confirm` middleware that will ask the user to confirm with his device before entering a given route.
 
 ```php
 Route::get('this/is/important', function () {
@@ -318,7 +318,7 @@ Use the `generateAttestation` and `validateAttestation` for your user. The latte
 
 use App\User; 
 use Illuminate\Support\Facades\Auth;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 
 $user = Auth::user();
 
@@ -333,7 +333,7 @@ Then later we can verify it:
 
 use App\User; 
 use Illuminate\Support\Facades\Auth;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 
 $user = Auth::user();
 
@@ -358,7 +358,7 @@ For assertion, simply create a request using `generateAssertion` and validate it
 <?php
 
 use App\User; 
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 
 // Find the user to assert, if there is any
 $user = User::where('email', request()->input('email'))->first();
@@ -374,7 +374,7 @@ Then later we can verify it:
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 
 // Verify the incoming assertion.
 $credentials = WebAuthn::validateAssertion(
@@ -405,11 +405,11 @@ You can use these methods to, for example, blacklist a stolen device/credential 
 
 ## Advanced Configuration
 
-Larapass was made to work out-of-the-box, but you can override the configuration by simply publishing the config file.
+larapasswordwor was made to work out-of-the-box, but you can override the configuration by simply publishing the config file.
 
-    php artisan vendor:publish --provider="DarkGhostHunter\Larapass\LarapassServiceProvider" --tag="config"
+    php artisan vendor:publish --provider="RealMrHex\larapasswordwor\larapasswordworServiceProvider" --tag="config"
 
-After that, you will receive the `config/larapass.php` config file with an array like this:
+After that, you will receive the `config/larapasswordwor.php` config file with an array like this:
 
 ```php
 <?php
@@ -601,7 +601,7 @@ These are some details about this WebAuthn implementation:
 * Users ID (handle) is a random UUID v4.
 * Credentials can be blacklisted (enabled/disabled).
 
-If you discover any security related issues, please email darkghosthunter@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email RealMrHex@gmail.com instead of using the issue tracker.
 
 > As a sidenote, remember to [configure your application properly if it's behind a load balancer](https://laravel.com/docs/requests#configuring-trusted-proxies).
 
@@ -612,7 +612,7 @@ If you discover any security related issues, please email darkghosthunter@gmail.
 [Yes](https://caniuse.com/#feat=webauthn). In the case of old browsers, you should have a fallback detection script. This can be asked with [the included Javascript helper](#5-use-the-javascript-helper-optional) in a breeze:
 
 ```javascript
-if (! Larapass.supportsWebAuthn()) {
+if (! larapasswordwor.supportsWebAuthn()) {
    alert('Your device is not secure enough to use this site!');
 }
 ```

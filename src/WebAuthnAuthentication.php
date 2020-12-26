@@ -1,20 +1,20 @@
 <?php
 
-namespace DarkGhostHunter\Larapass;
+namespace RealMrHex\larapasswordworword;
 
 use Illuminate\Support\Str;
 use Webauthn\PublicKeyCredentialUserEntity as UserEntity;
-use DarkGhostHunter\Larapass\Eloquent\WebAuthnCredential;
+use RealMrHex\larapasswordworword\Eloquent\WebAuthnCredential;
 use Webauthn\PublicKeyCredentialSource as CredentialSource;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordworword\Contracts\WebAuthnAuthenticatable;
 
 /**
- * @property-read \Illuminate\Database\Eloquent\Collection|\DarkGhostHunter\Larapass\Eloquent\WebAuthnCredential[] $webAuthnCredentials
+ * @property-read \Illuminate\Database\Eloquent\Collection|\RealMrHex\larapasswordworword\Eloquent\WebAuthnCredential[] $webAuthnCredentials
  */
 trait WebAuthnAuthentication
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany|\DarkGhostHunter\Larapass\Eloquent\WebAuthnCredential
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany|\RealMrHex\larapasswordworword\Eloquent\WebAuthnCredential
      */
     public function webAuthnCredentials()
     {
@@ -187,7 +187,7 @@ trait WebAuthnAuthentication
      * Returns an WebAuthnAuthenticatable user from a given Credential ID.
      *
      * @param  string  $id
-     * @return \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null
+     * @return \RealMrHex\larapasswordworword\Contracts\WebAuthnAuthenticatable|null
      */
     public static function getFromCredentialId(string $id) : ?WebAuthnAuthenticatable
     {
@@ -200,7 +200,7 @@ trait WebAuthnAuthentication
      * Returns a WebAuthAuthenticatable user from a given User Handle.
      *
      * @param  string  $handle
-     * @return \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null
+     * @return \RealMrHex\larapasswordworword\Contracts\WebAuthnAuthenticatable|null
      */
     public static function getFromCredentialUserHandle(string $handle) : ?WebAuthnAuthenticatable
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http;
+namespace RealMrHex\larapassword\Http;
 
 use Illuminate\Http\Request;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
-use DarkGhostHunter\Larapass\Events\AttestationSuccessful;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapassword\Facades\WebAuthn;
+use RealMrHex\larapassword\Events\AttestationSuccessful;
+use RealMrHex\larapassword\Contracts\WebAuthnAuthenticatable;
 
 trait RegistersWebAuthn
 {
@@ -14,7 +14,7 @@ trait RegistersWebAuthn
     /**
      * Returns a challenge to be verified by the user device.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapassword\Contracts\WebAuthnAuthenticatable  $user
      * @return \Illuminate\Http\JsonResponse
      */
     public function options(WebAuthnAuthenticatable $user)
@@ -26,7 +26,7 @@ trait RegistersWebAuthn
      * Registers a device for further WebAuthn authentication.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapassword\Contracts\WebAuthnAuthenticatable  $user
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request, WebAuthnAuthenticatable $user)
@@ -52,7 +52,7 @@ trait RegistersWebAuthn
     /**
      * The user has registered a credential.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapassword\Contracts\WebAuthnAuthenticatable  $user
      * @param  \Webauthn\PublicKeyCredentialSource  $credentials
      * @return void|mixed
      */

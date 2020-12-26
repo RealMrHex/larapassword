@@ -1,14 +1,14 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http;
+namespace RealMrHex\larapasswordwor\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 use Illuminate\Validation\ValidationException;
-use DarkGhostHunter\Larapass\Events\AttestationSuccessful;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Events\AttestationSuccessful;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 
 trait RecoversWebAuthn
 {
@@ -26,7 +26,7 @@ trait RecoversWebAuthn
             return redirect()->route('webauthn.lost.form');
         }
 
-        return view('larapass::recover')->with(
+        return view('larapasswordwor::recover')->with(
             ['token' => $request->query('token'), 'email' => $request->query('email')]
         );
     }
@@ -78,7 +78,7 @@ trait RecoversWebAuthn
 
         $response = WebAuthn::recover($credentials, function ($user) use ($request) {
             if (! $this->register($request, $user)) {
-                $this->sendRecoveryFailedResponse($request, 'larapass::recovery.failed');
+                $this->sendRecoveryFailedResponse($request, 'larapasswordwor::recovery.failed');
             }
         });
 
@@ -91,7 +91,7 @@ trait RecoversWebAuthn
      * Registers a device for further WebAuthn authentication.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return bool
      */
     protected function register(Request $request, WebAuthnAuthenticatable $user)

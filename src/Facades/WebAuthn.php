@@ -1,14 +1,14 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Facades;
+namespace RealMrHex\larapasswordwor\Facades;
 
 use Closure;
 use Illuminate\Support\Facades\Facade;
-use DarkGhostHunter\Larapass\Auth\CredentialBroker;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAttestCreator;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAttestValidator;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAssertValidator;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Auth\CredentialBroker;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAttestCreator;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAttestValidator;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAssertValidator;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 
 class WebAuthn extends Facade
 {
@@ -50,7 +50,7 @@ class WebAuthn extends Facade
     /**
      * Creates a new attestation (registration) request.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return \Webauthn\PublicKeyCredentialCreationOptions
      */
     public static function generateAttestation(WebAuthnAuthenticatable $user)
@@ -64,7 +64,7 @@ class WebAuthn extends Facade
      * It returns `false` when the validation fails.
      *
      * @param  array  $data
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return bool|\Webauthn\PublicKeyCredentialSource
      */
     public static function validateAttestation(array $data, WebAuthnAuthenticatable $user)
@@ -75,7 +75,7 @@ class WebAuthn extends Facade
     /**
      * Creates a new assertion request for a given user.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return \Webauthn\PublicKeyCredentialRequestOptions
      */
     public static function generateAssertion(?WebAuthnAuthenticatable $user = null)
@@ -133,7 +133,7 @@ class WebAuthn extends Facade
      * Get the user for the given credentials.
      *
      * @param  array  $credentials
-     * @return null|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|\Illuminate\Contracts\Auth\CanResetPassword
+     * @return null|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|\Illuminate\Contracts\Auth\CanResetPassword
      */
     public static function getUser(array $credentials)
     {
@@ -143,7 +143,7 @@ class WebAuthn extends Facade
     /**
      * Validate the given account recovery token.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|\Illuminate\Contracts\Auth\CanResetPassword|null  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|\Illuminate\Contracts\Auth\CanResetPassword|null  $user
      * @param  string  $token
      * @return bool
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Eloquent;
+namespace RealMrHex\larapasswordwor\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +10,7 @@ use Webauthn\PublicKeyCredentialSourceRepository;
 /**
  * @mixin \Illuminate\Database\Eloquent\Builder
  *
- * @property-read \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable $user
+ * @property-read \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable $user
  *
  * @property-read string $id
  *

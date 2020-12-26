@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\WebAuthn;
+namespace RealMrHex\larapasswordwor\WebAuthn;
 
 use Illuminate\Http\Request;
 use InvalidArgumentException;
@@ -11,7 +11,7 @@ use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\PublicKeyCredentialRpEntity as RelyingParty;
 use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Contracts\Cache\Factory as CacheFactoryContract;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 use Webauthn\PublicKeyCredentialCreationOptions as CreationOptions;
 use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 use Webauthn\AuthenticatorAttestationResponseValidator as AttestationValidator;
@@ -46,7 +46,7 @@ class WebAuthnAttestValidator extends WebAuthnAttestCreator
      * @param  \Illuminate\Contracts\Cache\Factory  $cache
      * @param  \Webauthn\PublicKeyCredentialRpEntity  $relyingParty
      * @param  \Webauthn\AuthenticatorSelectionCriteria  $criteria
-     * @param  \DarkGhostHunter\Larapass\WebAuthn\PublicKeyCredentialParametersCollection  $parameters
+     * @param  \RealMrHex\larapasswordwor\WebAuthn\PublicKeyCredentialParametersCollection  $parameters
      * @param  \Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs  $extensions
      * @param  \Webauthn\AuthenticatorAttestationResponseValidator  $validator
      * @param  \Illuminate\Http\Request  $laravelRequest
@@ -77,7 +77,7 @@ class WebAuthnAttestValidator extends WebAuthnAttestCreator
      * Validates the incoming response from the Client.
      *
      * @param  array  $data
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return bool|\Webauthn\PublicKeyCredentialSource
      */
     public function validate(array $data, $user)

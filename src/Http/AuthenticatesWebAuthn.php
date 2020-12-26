@@ -1,10 +1,10 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http;
+namespace RealMrHex\larapasswordwor\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
 
 trait AuthenticatesWebAuthn
 {
@@ -51,7 +51,7 @@ trait AuthenticatesWebAuthn
      * Return the user that should authenticate via WebAuthn.
      *
      * @param  array  $credentials
-     * @return \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null
+     * @return \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|null
      */
     protected function getUserFromCredentials(array $credentials)
     {

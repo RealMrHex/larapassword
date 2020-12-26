@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\WebAuthn;
+namespace RealMrHex\larapasswordwor\WebAuthn;
 
 use Illuminate\Http\Request;
 use InvalidArgumentException;
@@ -107,7 +107,7 @@ class WebAuthnAssertValidator
                                 ServerRequestInterface $request,
                                 Request $laravelRequest)
     {
-        $this->cache = $cache->store($config->get('larapass.cache'));
+        $this->cache = $cache->store($config->get('larapasswordwor.cache'));
         $this->relyingParty = $relyingParty;
         $this->extensions = $extensions;
         $this->validator = $validator;
@@ -115,8 +115,8 @@ class WebAuthnAssertValidator
         $this->request = $request;
 
         $this->laravelRequest = $laravelRequest;
-        $this->timeout = $config->get('larapass.timeout') * 1000;
-        $this->bytes = $config->get('larapass.bytes');
+        $this->timeout = $config->get('larapasswordwor.timeout') * 1000;
+        $this->bytes = $config->get('larapasswordwor.bytes');
 
         $this->verifyLogin = $this->shouldVerifyLogin($config);
     }
@@ -129,11 +129,11 @@ class WebAuthnAssertValidator
      */
     protected function shouldVerifyLogin(ConfigContract $config)
     {
-        if (in_array($config->get('larapass.userless'), ['required', 'preferred'])) {
+        if (in_array($config->get('larapasswordwor.userless'), ['required', 'preferred'])) {
             return 'required';
         }
 
-        return $config->get('larapass.login_verify');
+        return $config->get('larapasswordwor.login_verify');
     }
 
     /**
@@ -149,7 +149,7 @@ class WebAuthnAssertValidator
     /**
      * Returns a challenge for the given request fingerprint.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|null  $user
      * @return \Webauthn\PublicKeyCredentialRequestOptions
      */
     public function generateAssertion($user = null)
@@ -164,7 +164,7 @@ class WebAuthnAssertValidator
     /**
      * Creates a new Assertion Request for the request, and user if issued.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|null  $user
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|null  $user
      * @return \Webauthn\PublicKeyCredentialRequestOptions
      */
     protected function makeAssertionRequest($user = null)
@@ -186,7 +186,7 @@ class WebAuthnAssertValidator
      */
     protected function cacheKey()
     {
-        return 'larapass.assertation|' .
+        return 'larapasswordwor.assertation|' .
             sha1($this->laravelRequest->getHttpHost() . '|' . $this->laravelRequest->ip());
     }
 

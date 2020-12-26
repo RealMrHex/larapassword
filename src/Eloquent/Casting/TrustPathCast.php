@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Eloquent\Casting;
+namespace RealMrHex\larapasswordwor\Eloquent\Casting;
 
 use Webauthn\TrustPath\TrustPathLoader;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;

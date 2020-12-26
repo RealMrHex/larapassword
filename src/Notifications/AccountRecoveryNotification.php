@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Notifications;
+namespace RealMrHex\larapasswordwor\Notifications;
 
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Notifications\Notification;

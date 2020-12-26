@@ -1,6 +1,6 @@
 <?php
 
-use DarkGhostHunter\Larapass\Eloquent\WebAuthnCredential;
+use RealMrHex\Larapassword\Eloquent\WebAuthnCredential;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

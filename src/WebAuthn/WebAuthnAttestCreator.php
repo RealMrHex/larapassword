@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\WebAuthn;
+namespace RealMrHex\larapasswordwor\WebAuthn;
 
 use Illuminate\Http\Request;
 use Webauthn\AuthenticatorSelectionCriteria;
@@ -9,7 +9,7 @@ use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialRpEntity as RelyingParty;
 use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Contracts\Cache\Factory as CacheFactoryContract;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 
 class WebAuthnAttestCreator
@@ -38,7 +38,7 @@ class WebAuthnAttestCreator
     /**
      * Parameters for the credentials creation.
      *
-     * @var \DarkGhostHunter\Larapass\WebAuthn\PublicKeyCredentialParametersCollection
+     * @var \RealMrHex\larapasswordwor\WebAuthn\PublicKeyCredentialParametersCollection
      */
     protected $parameters;
 
@@ -91,7 +91,7 @@ class WebAuthnAttestCreator
      * @param  \Illuminate\Contracts\Cache\Factory  $cache
      * @param  \Webauthn\PublicKeyCredentialRpEntity  $relyingParty
      * @param  \Webauthn\AuthenticatorSelectionCriteria  $criteria
-     * @param  \DarkGhostHunter\Larapass\WebAuthn\PublicKeyCredentialParametersCollection  $parameters
+     * @param  \RealMrHex\larapasswordwor\WebAuthn\PublicKeyCredentialParametersCollection  $parameters
      * @param  \Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs  $extensions
      * @param  \Illuminate\Http\Request  $request
      */
@@ -103,23 +103,23 @@ class WebAuthnAttestCreator
                                 AuthenticationExtensionsClientInputs $extensions,
                                 Request $request)
     {
-        $this->cache = $cache->store($config->get('larapass.cache'));
+        $this->cache = $cache->store($config->get('larapasswordwor.cache'));
         $this->relyingParty = $relyingParty;
         $this->criteria = $criteria;
         $this->parameters = $parameters;
         $this->extensions = $extensions;
         $this->laravelRequest = $request;
 
-        $this->timeout = $config->get('larapass.timeout') * 1000;
-        $this->bytes = $config->get('larapass.bytes');
-        $this->conveyance = $config->get('larapass.conveyance');
-        $this->unique = $config->get('larapass.unique');
+        $this->timeout = $config->get('larapasswordwor.timeout') * 1000;
+        $this->bytes = $config->get('larapasswordwor.bytes');
+        $this->conveyance = $config->get('larapasswordwor.conveyance');
+        $this->unique = $config->get('larapasswordwor.unique');
     }
 
     /**
      * Retrieves an Attestation if it exists.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return \Webauthn\PublicKeyCredentialCreationOptions|null
      */
     public function retrieveAttestation($user)
@@ -130,7 +130,7 @@ class WebAuthnAttestCreator
     /**
      * Generates a new Attestation for a given user.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|\DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|\RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return mixed|\Webauthn\PublicKeyCredentialCreationOptions
      */
     public function generateAttestation($user)
@@ -145,7 +145,7 @@ class WebAuthnAttestCreator
     /**
      * Returns the challenge that is remembered specifically for the user.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable|\Illuminate\Contracts\Auth\Authenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable|\Illuminate\Contracts\Auth\Authenticatable  $user
      * @return mixed
      */
     protected function makeAttestationRequest($user)
@@ -172,7 +172,7 @@ class WebAuthnAttestCreator
     protected function cacheKey(Authenticatable $user)
     {
         return implode('|', [
-            'larapass.attestation',
+            'larapasswordwor.attestation',
             get_class($user) . ':' . $user->getAuthIdentifier(),
             sha1($this->laravelRequest->getHttpHost() . '|' . $this->laravelRequest->ip()),
         ]);
@@ -181,7 +181,7 @@ class WebAuthnAttestCreator
     /**
      * Return the excluded credentials if the configuration demands it.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return array
      */
     protected function getExcludedCredentials(WebAuthnAuthenticatable $user)

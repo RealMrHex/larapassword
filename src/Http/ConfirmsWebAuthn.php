@@ -1,10 +1,10 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http;
+namespace RealMrHex\larapasswordwor\Http;
 
 use Illuminate\Http\Request;
-use DarkGhostHunter\Larapass\Facades\WebAuthn;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Facades\WebAuthn;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 
 trait ConfirmsWebAuthn
 {
@@ -17,13 +17,13 @@ trait ConfirmsWebAuthn
      */
     public function showConfirmForm()
     {
-        return view('larapass::confirm');
+        return view('larapasswordwor::confirm');
     }
 
     /**
      * Return a request to assert the device.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @return \Webauthn\PublicKeyCredentialRequestOptions
      */
     public function options(WebAuthnAuthenticatable $user)

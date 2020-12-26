@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass;
+namespace RealMrHex\larapasswordwor;
 
 use RuntimeException;
 use Illuminate\Support\Str;
@@ -17,26 +17,26 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Webauthn\TokenBinding\TokenBindingHandler;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Cose\Algorithm\Manager as CoseAlgorithmManager;
-use DarkGhostHunter\Larapass\Auth\CredentialBroker;
+use RealMrHex\larapasswordwor\Auth\CredentialBroker;
 use Webauthn\TokenBinding\IgnoreTokenBindingHandler;
 use Webauthn\AuthenticatorAssertionResponseValidator;
 use Illuminate\Auth\Passwords\DatabaseTokenRepository;
 use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\MetadataService\MetadataStatementRepository;
 use Webauthn\AttestationStatement\AttestationObjectLoader;
-use DarkGhostHunter\Larapass\Auth\EloquentWebAuthnProvider;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAttestCreator;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAssertValidator;
-use DarkGhostHunter\Larapass\WebAuthn\WebAuthnAttestValidator;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Auth\EloquentWebAuthnProvider;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAttestCreator;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAssertValidator;
+use RealMrHex\larapasswordwor\WebAuthn\WebAuthnAttestValidator;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 use Webauthn\AttestationStatement\NoneAttestationStatementSupport;
 use Webauthn\AuthenticationExtensions\ExtensionOutputCheckerHandler;
 use Webauthn\AttestationStatement\AttestationStatementSupportManager;
 use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
-use DarkGhostHunter\Larapass\WebAuthn\PublicKeyCredentialParametersCollection;
-use DarkGhostHunter\Larapass\Eloquent\WebAuthnCredential as WebAuthnAuthenticationModel;
+use RealMrHex\larapasswordwor\WebAuthn\PublicKeyCredentialParametersCollection;
+use RealMrHex\larapasswordwor\Eloquent\WebAuthnCredential as WebAuthnAuthenticationModel;
 
-class LarapassServiceProvider extends ServiceProvider
+class larapasswordworServiceProvider extends ServiceProvider
 {
     /**
      * Register the application services.
@@ -45,7 +45,7 @@ class LarapassServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/larapass.php', 'larapass');
+        $this->mergeConfigFrom(__DIR__ . '/../config/larapasswordwor.php', 'larapasswordwor');
 
         $this->app->alias(Authenticatable::class, WebAuthnAuthenticatable::class);
 
@@ -103,7 +103,7 @@ class LarapassServiceProvider extends ServiceProvider
         $this->app->bind(CoseAlgorithmManager::class, static function ($app) {
             $manager = new CoseAlgorithmManager;
 
-            foreach ($app['config']->get('larapass.algorithms') as $algorithm) {
+            foreach ($app['config']->get('larapasswordwor.algorithms') as $algorithm) {
                 $manager->add(new $algorithm);
             }
 
@@ -140,9 +140,9 @@ class LarapassServiceProvider extends ServiceProvider
             $config = $app['config'];
 
             return new PublicKeyCredentialRpEntity(
-                $config->get('larapass.relaying_party.name'),
-                $config->get('larapass.relaying_party.id'),
-                $config->get('larapass.relaying_party.icon')
+                $config->get('larapasswordwor.relaying_party.name'),
+                $config->get('larapasswordwor.relaying_party.id'),
+                $config->get('larapasswordwor.relaying_party.icon')
             );
         });
 
@@ -150,10 +150,10 @@ class LarapassServiceProvider extends ServiceProvider
             $config = $app['config'];
 
             $selection = new WebAuthn\AuthenticatorSelectionCriteria(
-                $config->get('larapass.cross-plataform')
+                $config->get('larapasswordwor.cross-plataform')
             );
 
-            if ($userless = $config->get('larapass.userless')) {
+            if ($userless = $config->get('larapasswordwor.userless')) {
                 $selection->setResidentKey($userless);
             }
 
@@ -203,8 +203,8 @@ class LarapassServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'larapass');
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'larapass');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'larapasswordwor');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'larapasswordwor');
 
         $this->app['auth']->provider('eloquent-webauthn', static function ($app, $config) {
             return new EloquentWebAuthnProvider(
@@ -230,7 +230,7 @@ class LarapassServiceProvider extends ServiceProvider
     protected function publishFiles()
     {
         $this->publishes([
-            __DIR__ . '/../config/larapass.php' => config_path('larapass.php'),
+            __DIR__ . '/../config/larapasswordwor.php' => config_path('larapasswordwor.php'),
         ], 'config');
 
         $this->publishes([
@@ -238,11 +238,11 @@ class LarapassServiceProvider extends ServiceProvider
         ], 'controllers');
 
         $this->publishes([
-            __DIR__ . '/../resources/js' => public_path('vendor/larapass/js'),
+            __DIR__ . '/../resources/js' => public_path('vendor/larapasswordwor/js'),
         ], 'public');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/larapass'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/larapasswordwor'),
         ], 'views');
 
         $this->publishes([

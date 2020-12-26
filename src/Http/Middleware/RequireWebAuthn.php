@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Http\Middleware;
+namespace RealMrHex\larapasswordwor\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Session\Session;
@@ -52,7 +52,7 @@ class RequireWebAuthn
         $this->responseFactory = $responseFactory;
         $this->urlGenerator = $urlGenerator;
         $this->session = $session;
-        $this->remember = $config->get('larapass.confirm_timeout', 10800);
+        $this->remember = $config->get('larapasswordwor.confirm_timeout', 10800);
     }
 
     /**

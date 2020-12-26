@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\WebAuthn;
+namespace RealMrHex\larapasswordwor\WebAuthn;
 
 use Webauthn\AuthenticatorSelectionCriteria as WebAuthnAuthenticatorSelectionCriteria;
 

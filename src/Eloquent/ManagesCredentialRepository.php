@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Eloquent;
+namespace RealMrHex\larapasswordwor\Eloquent;
 
 use Webauthn\PublicKeyCredentialUserEntity as UserEntity;
 use Webauthn\PublicKeyCredentialSource as CredentialSource;

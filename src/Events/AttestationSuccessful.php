@@ -1,16 +1,16 @@
 <?php
 
-namespace DarkGhostHunter\Larapass\Events;
+namespace RealMrHex\larapasswordwor\Events;
 
 use Webauthn\PublicKeyCredentialSource;
-use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
+use RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable;
 
 class AttestationSuccessful
 {
     /**
      * The user who registered a new set of credentials.
      *
-     * @var \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable
+     * @var \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable
      */
     public $user;
 
@@ -24,7 +24,7 @@ class AttestationSuccessful
     /**
      * Create a new Event instance.
      *
-     * @param  \DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable  $user
+     * @param  \RealMrHex\larapasswordwor\Contracts\WebAuthnAuthenticatable  $user
      * @param  \Webauthn\PublicKeyCredentialSource  $credential
      * @return void
      */

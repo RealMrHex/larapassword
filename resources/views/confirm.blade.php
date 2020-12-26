@@ -1,4 +1,4 @@
-@extends('larapass::layout')
+@extends('larapasswordword::layout')
 
 @section('title', __('Authenticator confirmation'))
 
@@ -15,9 +15,9 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/larapass/js/larapass.js') }}"></script>
+    <script src="{{ asset('vendor/larapassword/js/larapassword.js') }}"></script>
     <script>
-        const larapass = new Larapass({
+        const larapassword = new larapassword({
             login: '/webauthn/confirm',
             loginOptions: '/webauthn/confirm/options'
         });
@@ -25,7 +25,7 @@
         document.getElementById('form').addEventListener('submit', function (event) {
             event.preventDefault()
 
-            larapass.login()
+            larapassword.login()
                 .then(response => window.location.replace(response.redirectTo))
                 .catch(response => {
                     alert('{{ __('Confirmation unsuccessful, try again!') }}')
